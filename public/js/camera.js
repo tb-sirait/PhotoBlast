@@ -90,15 +90,11 @@ function createPhotoCollage() {
         canvas.height = templateImage.height;
 
         // ukuran foto
-        const photoWidth = 280;
-        const photoHeight = 190.6;
+        const photoWidth = width;
+        const photoHeight = height;
 
         // Menggambar template foto ke canvas
         context.drawImage(templateImage, 0, 0);
-
-        // kordinat awal posisi gambar
-        let x = 17;
-        let y = 20;
 
         // Menggambar foto-foto dari local storage ke dalam template foto
         for (let i = 1; i <= 4; i++) {
@@ -160,26 +156,26 @@ function stopRecordingAndDownload() {
             contentType: false,
             success: function (response) {
                 console.log("Response dari server:", response);
+                // pembersihan local storage
+                localStorage.clear();
+                const data = new FormData();
+                data.append("email", email);
+                $.ajax({
+                    url: "/send-mail",
+                    type: "POST",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log("Response dari server : ", response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error : ", error);
+                    },
+                });
             },
             error: function (xhr, status, error) {
                 console.error("Error:", error);
-            },
-        });
-
-        // pembersihan local storage
-        localStorage.clear();
-
-        $.ajax({
-            url: "/send-mail",
-            type: "POST",
-            email: ["abdamadhafiz13@gmail.com"],
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                console.log("Response dari server : ", response);
-            },
-            error: function (xhr, status, error) {
-                console.error("Error : ", error);
             },
         });
     });

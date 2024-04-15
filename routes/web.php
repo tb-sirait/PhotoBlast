@@ -9,3 +9,5 @@ Route::post('/verify', [App\Http\Controllers\PhotoblastController::class, 'verif
 Route::post('/save-video', [App\Http\Controllers\PhotoblastController::class, 'saveVideo'])->name('save-video');
 Route::post('/save-photo', [App\Http\Controllers\PhotoblastController::class, 'savePhoto'])->name('save-photo');
 Route::post('/send-mail', [App\Http\Controllers\PhotoblastController::class, 'sendPhoto'])->name('send-mail');
+Route::resource('redeem', App\Http\Controllers\CodeController::class);
+Route::resource('tempcollage', \App\Http\Controllers\TempcollageController::class); 

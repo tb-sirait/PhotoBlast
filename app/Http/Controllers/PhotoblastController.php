@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Code;
+use App\Models\Tempcollage;
+use App\Models\Transaction;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Transaction;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use App\Mail\SendPhotoAndVideo;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendPhotoAndVideo;
 use ZipArchive;
 
 class PhotoblastController extends Controller
@@ -20,12 +23,21 @@ class PhotoblastController extends Controller
 
     public function index(){
 
-        return view('index', []);
+        return redirect()->route('redeem.index');
     
     }
 
     public function camera(){
-        return view('camera');
+        $temp = Tempcollage::where('id', session('temp_id'))->first();
+        $code = Code::where('code', session('code'))->first();
+        return view('camera', [
+            'template_src' => $temp->src,
+            'template_width' => $temp->width,
+            'template_height' => $temp->height,
+            'template_x' => $temp->x,
+            'template_y' => $temp->y,
+            'email' => $code->transaction->email
+        ]);
     }
 
     public function processpayment(Request $request){
@@ -118,7 +130,7 @@ class PhotoblastController extends Controller
         // Buka file ZIP
         if ($zip->open($zipFile) === TRUE) {
             // Ekstrak file ZIP ke dalam direktori tujuan
-            $destinationPath = storage_path('app/public/user/photo'); // Direktori tujuan ekstraksi
+            $destinationPath = storage_path('app/public/aser/photo'); // Direktori tujuan ekstraksi
             $zip->extractTo($destinationPath);
             $zip->close();
 
@@ -134,11 +146,11 @@ class PhotoblastController extends Controller
     }
 
     public function sendPhoto(Request $request) {
-        $filePath = storage_path('app/public/user/photo/');
+        $filePath = storage_path('app/public/aser/photo/');
         $photoFiles = glob($filePath.'/*.png');
 
-        $penerima = 'syakillaputri1909@gmail.com';
-        Mail::to($penerima)->send(new SendPhotoAndVideo($photoFiles));
+        Mail::to($request->email)->send(new SendPhotoAndVideo($photoFiles));
         return response()->json(['message' => $photoFiles], 201);
     }
+
 }

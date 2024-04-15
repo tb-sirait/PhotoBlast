@@ -3,165 +3,84 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #59d5e0;
+    background-color: #212529;
 }
-
-@keyframes pop {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-nav {
-    margin-left: 30px;
-    display: flex;
-    align-items: center;
-    gap: 308px;
-    height: 87px;
-    margin-top: 20px;
-    font-family: "Madimi One";
-    margin: 0;
-    padding-top: 5px;
-    padding-left: 30px;
-}
-
-nav h1 {
-    color: #f4538a;
-    font-size: 64px;
-    margin: 0;
-}
-nav .menu {
-    color: white;
-}
-nav .menu ul {
-    display: flex;
-    list-style: none;
-    gap: 156px;
-    font-size: 48px;
-}
-section#content {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 50px;
-}
-section#content h1.title {
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 96px;
-    text-align: center;
-    font-family: "Madimi One";
-    margin: 0;
-    margin-bottom: 20px;
-}
-section#content .packages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 70px;
+section.content {
     width: 100%;
-}
-/* section#content .detail-package {
-    display: none !important;
-} */
-section#content .packages .package,
-section#content .packages .detail-package {
-    background: linear-gradient(90deg, #cc208e 0%, #6713d2 100%);
-    min-width: 382px;
-    height: 466px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    border-radius: 50px;
-    animation: background 2s ease-in-out;
-}
-section#content .packages .package:hover {
-    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-}
-section#content .packages .package .heading-content,
-section#content .packages .detail-package .heading-content {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 42px;
-    margin: 0;
-}
-section#content .packages .package .heading-content .logo,
-section#content .packages .detail-package .heading-content .logo {
-    background: linear-gradient(90deg, #f83600 0%, #f9d423 100%);
-    width: 150px;
-    height: 150px;
-    border-radius: 50px;
-}
-section#content .packages .package .heading-content .titleandprice,
-section#content .packages .detail-package .heading-content .titleandprice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-}
-section#content .packages .package .heading-content .titleandprice h1,
-section#content .packages .detail-package .heading-content .titleandprice h1 {
-    font-size: 40px;
-    color: white;
-    margin-bottom: 0;
-    margin-top: 0;
-    font-family: "Madimi One";
-}
-section#content .packages .package .description-content,
-section#content .packages .detail-package .description-content {
-    color: white;
-    width: 323px;
-    font-size: 20px;
-    font-family: arial;
-}
-section#content .packages .detail-package .instruction-content h1 {
-    font-family: "Madimi One";
-    color: rgba(249, 212, 35, 1);
-    font-size: 40px;
-    margin: 0;
-}
-section#content .packages .detail-package .instruction-content p {
-    font-family: "Arial";
-    color: white;
-    font-size: 20px;
-}
-section#content .packages .package button.confirmed,
-section#content .packages .detail-package button.confirmed {
-    background: linear-gradient(0deg, #f5dd61, #f5dd61);
-    border: inherit;
-    border-radius: 20px;
-    font-size: 48px;
-    color: rgba(244, 83, 138, 1);
-    font-family: "Madimi One";
-    display: flex;
     justify-content: center;
+    gap: 103px;
+    cursor: click;
+}
+.container {
+    width: 641px;
+    height: 113px;
+    border: 9px solid #adb5bd;
+    border-radius: 41px;
+    display: flex;
     align-items: center;
-    text-decoration: none;
+    justify-content: center;
 }
-/* section#content .packages .detail-package button {
-    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+form .container input {
+    border: none;
+    background-color: inherit;
     color: white;
-} */
-section#content .packages .package.pop-animation {
-    animation: pop 0.3s ease;
+    font-size: 30px;
+    width: 60%;
+    height: 70%;
 }
-section#content .packages .detail-package .package-confirmed {
-    /* width: 964px; */
-    height: 434px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, #cc208e 0%, #6713d2 100%);
-    padding: 28px;
+form .container input::placeholder {
+    color: white;
+    font-size: 30px;
+}
+form .container input:focus {
+    outline: none;
+    border: none;
+    background-color: inherit;
+}
+form .container button {
+    width: 30%;
+    height: 80%;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 40px;
+    padding: 20px;
+    color: black;
     display: flex;
-    flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    font-size: 40px;
+    gap: 20px;
+}
+.templates {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    mask-image: url("../img/3d.svg");
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+    mask-position: center;
+    height: 570px;
+    width: 797px;
+    overflow: hidden;
+}
+.templates .template {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin-left: 435px;
+    transition: transform 0.5s;
+}
+.template a img {
+    width: 200px;
+    height: 520px;
+}
+.highlight {
+    width: 210px !important;
+    height: 550px !important;
+    transition: width 0.5s, height 0.5s;
 }

@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('codes', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_number');
-            $table->integer('amount');
-            $table->string('status');
+            $table->string('code');
             $table->foreignIdFor(\App\Models\Packet::class);
-            $table->string('method');
-            $table->string('email');
+            $table->foreignIdFor(\App\Models\Transaction::class);
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('codes');
     }
 };

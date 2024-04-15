@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/camera.css') }}">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset("js/jszip.min.js") }}"></script>
-    <script src="{{ asset('js/email.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
   @else

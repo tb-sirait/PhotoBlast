@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('tempcollages', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_number');
-            $table->integer('amount');
-            $table->string('status');
-            $table->foreignIdFor(\App\Models\Packet::class);
-            $table->string('method');
-            $table->string('email');
+            $table->string('src');
+            $table->integer('x');
+            $table->integer('y');
+            $table->float('width');
+            $table->float('height');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('tempcollages');
     }
 };

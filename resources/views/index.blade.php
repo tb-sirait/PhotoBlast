@@ -52,7 +52,7 @@
             <div class="heading-content">
               <div class="logo"></div>
               <div class="titleandprice">
-                <h1>Suke</h1>
+                <h1>Reedem</h1>
                 <h1>100K</h1>
               </div>
             </div>
@@ -61,11 +61,7 @@
             </div>
           </div>
         </div>
-        <form action="{{ route('payment') }}" method="post">
-          @csrf
-          <input type="hidden" name="amount" value="100000">
-          <button type=submit class="confirmed">Confirm Payment</button>
-        </form>
+        <a href="{{ route('redeem.index') }}">Reedem</a>
       </div>
     </div>
   </section>
