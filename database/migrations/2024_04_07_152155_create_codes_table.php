@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->foreignIdFor(\App\Models\Packet::class);
+            $table->string('status');
             $table->foreignIdFor(\App\Models\Transaction::class);
             $table->timestamps();
         });

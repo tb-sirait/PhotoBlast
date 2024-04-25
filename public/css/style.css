@@ -5,6 +5,18 @@ body {
     height: 100%;
     background-color: #212529;
 }
+
+section#content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: Arial;
+    gap: 20px;
+}
+
 section.content {
     width: 100%;
     height: 100%;
@@ -14,6 +26,7 @@ section.content {
     gap: 103px;
     cursor: click;
 }
+
 .container {
     width: 641px;
     height: 113px;
@@ -23,6 +36,7 @@ section.content {
     align-items: center;
     justify-content: center;
 }
+
 form .container input {
     border: none;
     background-color: inherit;
@@ -31,15 +45,18 @@ form .container input {
     width: 60%;
     height: 70%;
 }
+
 form .container input::placeholder {
     color: white;
     font-size: 30px;
 }
+
 form .container input:focus {
     outline: none;
     border: none;
     background-color: inherit;
 }
+
 form .container button {
     width: 30%;
     height: 80%;
@@ -53,6 +70,7 @@ form .container button {
     font-size: 40px;
     gap: 20px;
 }
+
 .templates {
     display: flex;
     align-items: center;
@@ -65,6 +83,7 @@ form .container button {
     width: 797px;
     overflow: hidden;
 }
+
 .templates .template {
     width: 100%;
     height: 100%;
@@ -75,12 +94,108 @@ form .container button {
     margin-left: 435px;
     transition: transform 0.5s;
 }
+
 .template a img {
     width: 200px;
     height: 520px;
 }
+
 .highlight {
     width: 210px !important;
     height: 550px !important;
     transition: width 0.5s, height 0.5s;
+}
+
+section#content h1 {
+    margin-top: 40px;
+}
+
+section#list-photo {
+    width: 1325px;
+    height: 550px;
+    background-color: #adb5bd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    overflow: scroll;
+}
+
+section#list-photo .photo-group {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+section#list-photo .photo-group img {
+    width: 200px;
+    height: 200px;
+}
+
+.photo-item {
+    position: relative;
+    display: inline-block;
+}
+
+.photo-item input {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.formgroup {
+    display: flex;
+    gap: 101px;
+}
+
+.formbutton {
+    width: 210px;
+    height: 80px;
+    border-radius: 40px;
+    border: none;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+section#linkedvideo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+section#linkedvideo video {
+    width: 640px;
+    height: 480px;
+}
+
+section#linkedvideo a {
+    text-decoration: none;
+    background-color: #5cb85c;
+    color: white;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: arial;
+    font-weight: bolder;
+    font-size: 16px;
+    border-radius: 20px;
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreTempcollageRequest;
 use App\Http\Requests\UpdateTempcollageRequest;
 use Illuminate\Support\Facades\Session;
+use App\Models\Code;
 
 class TempcollageController extends Controller
 {
@@ -14,10 +15,16 @@ class TempcollageController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('template', [
-            'temps' => Tempcollage::all()
-        ]);
+    {   
+        if(session()->has('code')){
+            $code = Code::where('code', session('code'))->first(); 
+            if($code && $code->status == 'ready') {
+                return view('template', [
+                    'temps' => Tempcollage::all()
+                ]);
+            }
+        }
+        return redirect()->route('redeem.index');
     }
 
     /**
@@ -41,11 +48,17 @@ class TempcollageController extends Controller
      */
     public function show(Tempcollage $tempcollage)
     {
-        // masukkan ke sesi temp_id yang bernilai id tabel dari template foto
-        Session::put('temp_id', $tempcollage->id);
-
-        // redirect ke halaman kamera
-        return redirect()->route('camera');
+        if(session()->has('code')){
+            $code = Code::where('code', session('code'))->first(); 
+            if($code && $code->status == 'ready') {
+                // masukkan ke sesi temp_id yang bernilai id tabel dari template foto
+                Session::put('temp_id', $tempcollage->id);
+        
+                // redirect ke halaman kamera
+                return redirect()->route('camera');
+            }
+        }
+        return redirect()->route('redeem.index');
     }
     /**
      * Show the form for editing the specified resource.

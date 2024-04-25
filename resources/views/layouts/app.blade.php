@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photoblast</title>
-  @if(Request::routeIs('camera'))
+  <meta name="theme-color" content="#6777ef">
+  <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
+  <link rel="manifest" href="{{ asset('/manifest.json') }}">
+  @if(Request::routeIs(['camera', 'retake-photo', 'print']))
     <link rel="stylesheet" href="{{ asset('css/camera.css') }}">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset("js/jszip.min.js") }}"></script>
@@ -19,5 +22,13 @@
 </head>
 <body>
   @yield('content')
+  <script src="{{ asset('/sw.js') }}"></script>
+  <script>
+    if(!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register('/sw.js').then(function(reg){
+        console.log('Service worker has been registered for scope: ' + reg.scope);
+      })
+    }
+  </script>
 </body>
 </html>

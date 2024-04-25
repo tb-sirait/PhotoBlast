@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('invoice_number');
             $table->integer('amount');
             $table->string('status');
-            $table->foreignIdFor(\App\Models\Packet::class);
+            // $table->foreignIdFor(\App\Models\Packet::class);
             $table->string('method');
             $table->string('email');
             $table->timestamps();

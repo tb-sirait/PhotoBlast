@@ -34,8 +34,7 @@ class CodeController extends Controller
 
         // deteksi code apakah tersedia dalam database atau tidak
         $code = Code::where('code', $request->code)->first();
-        if($code) {
-
+        if($code && $code->status == 'ready') {
             // simpan data code ke session
             Session::put('code', $code->code);
 

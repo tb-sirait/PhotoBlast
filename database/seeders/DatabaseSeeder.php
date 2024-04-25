@@ -13,50 +13,69 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        \App\Models\Jurusan::create([
-            'name' => 'Ilmu Komputer'
+        \App\Models\Tempcollage::create([
+            'src' => 'storage/template/1.jpg',
+            'x' => 17,
+            'y' => 20,
+            'width' => 280,
+            'height' => 190.6
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Kimia'
+        \App\Models\Tempcollage::create([
+            'src' => 'storage/template/2.jpg',
+            'x' => 17,
+            'y' => 20,
+            'width' => 280,
+            'height' => 190.6
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Ekonomi'
+        \App\Models\Tempcollage::create([
+            'src' => 'storage/template/3.jpg',
+            'x' => 17,
+            'y' => 20,
+            'width' => 280,
+            'height' => 190.6
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Komunikasi'
+        \App\Models\Tempcollage::create([
+            'src' => 'storage/template/4.jpg',
+            'x' => 17,
+            'y' => 20,
+            'width' => 280,
+            'height' => 190.6
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Kimia'
+        \App\Models\Code::create([
+            'code' => 'dfafsda',
+            'status' => 'ready',
+            'transaction_id' => 1
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Mesin'
+        \App\Models\Code::create([
+            'code' => 'dfafsad',
+            'status' => 'ready',
+            'transaction_id' => 2
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Perminyakan'
+        \App\Models\Code::create([
+            'code' => 'dffasaa',
+            'status' => 'ready',
+            'transaction_id' => 3
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Logistik'
+        \App\Models\Transaction::create([
+            'invoice_number' => 432423423,
+            'amount' => 100000,
+            'status' => 'settlement',
+            'method' => 'qris',
+            'email' => 'abdamadhafiz13@gmail.com'
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Elektro'
+        \App\Models\Transaction::create([
+            'invoice_number' => 432422423,
+            'amount' => 100000,
+            'status' => 'settlement',
+            'method' => 'qris',
+            'email' => 'abdamadhafiz13@gmail.com'
         ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Sipil'
-        ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Lingkungan'
-        ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Hubungan Internasional'
-        ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Geofisika'
-        ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Teknik Geologi'
-        ]);
-        \App\Models\Jurusan::create([
-            'name' => 'Manajemen'
+        \App\Models\Transaction::create([
+            'invoice_number' => 432422323,
+            'amount' => 100000,
+            'status' => 'settlement',
+            'method' => 'qris',
+            'email' => 'abdamadhafiz13@gmail.com'
         ]);
     }
 }
