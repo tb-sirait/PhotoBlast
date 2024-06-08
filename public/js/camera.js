@@ -32,19 +32,19 @@ cameraButton.addEventListener("click", function () {
 
 // Function to capture photo and save
 function capturePhotoAndSave() {
-    let time = 10;
-    function countdown(callback) {
+    let time = document.querySelector('section#Camera .button select.timer-button').value;
+    function countdown() {
         if (time >= 0) {
             setTimeout(() => {
                 countdowndisplay.style.display = "flex";
                 countdowndisplay.textContent = time;
                 time--;
-                countdown(callback);
+                countdown();
             }, 1000);
         } else {
             countdowndisplay.style.display = "none";
             countdowndisplay.textContent = "";
-            callback();
+            afterCountDown();
         }
     }
     function afterCountDown() {
@@ -62,7 +62,7 @@ function capturePhotoAndSave() {
         localStorage.setItem(`photo_${photoCount}`, dataUrl);
         photoCount++;
     }
-    countdown(afterCountDown);
+    countdown();
 }
 
 // Function to start recording video
@@ -102,7 +102,7 @@ function startRecording(stream) {
     mediaRecorder.start();
 }
 
-// fitur download rekaman, foto, dan collase
+// fitur download rekaman, foto
 function stopRecordingAndDownload() {
     const videoStream = video.srcObject;
     const tracks = videoStream.getTracks();

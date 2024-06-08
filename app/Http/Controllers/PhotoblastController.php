@@ -24,12 +24,12 @@ class PhotoblastController extends Controller
     public function index(){
 
         return redirect()->route('redeem.index');
-    
+
     }
 
     public function camera(){
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 // ambil code bersangkutan
                 $code = Code::where('code', session('code'))->first();
@@ -56,10 +56,10 @@ class PhotoblastController extends Controller
     //         'amount' => $request->amount,
     //         'status' => 'CREATED'
     //     ]);
-        
+
     //     $resp = Http::withHeaders([
     //         'Accept' => 'application/json',
-    //         'Content-Type' => 'application/json',  
+    //         'Content-Type' => 'application/json',
     //     ])->withBasicAuth(env('MIDTRANS_SERVER_KEY'),'')
     //       ->post('https://api.sandbox.midtrans.com/v2/charge', [
     //         'payment_type' => 'qris',
@@ -93,7 +93,7 @@ class PhotoblastController extends Controller
     //     $id = preg_replace('/[a-zA-Z]+/', '', $orderId);
 
     //     $resp = Http::withHeaders([
-    //         'Accept' => 'application/json',  
+    //         'Accept' => 'application/json',
     //     ])->withBasicAuth(env('MIDTRANS_SERVER_KEY'),'')
     //       ->get("https://api.sandbox.midtrans.com/v2/$orderId/status");
     //     $status = $resp->json('transaction_status');
@@ -125,7 +125,7 @@ class PhotoblastController extends Controller
 
     public function savePhoto(Request $request){
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 // Ambil file ZIP dari request
                 $zipFile = $request->file('photoZip');
@@ -156,14 +156,14 @@ class PhotoblastController extends Controller
 
     public function listRepeatPhoto(){
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 // ambil code yang terdeteksi yang akan digunakan untuk mengambil path foto yang bersangkutan
                 $code = Code::where('code', session('code'))->first();
                 $directory = 'public/'.$code->transaction->email.'/photo';
 
                 if(Storage::exists($directory)) {
-                    //ambil semua file dari folder bersangkutan 
+                    //ambil semua file dari folder bersangkutan
                     $files = Storage::files($directory);
                     return view('list', [
                         'h1' => 'Pilih 1 atau lebih foto yang ingin diulang!',
@@ -178,9 +178,9 @@ class PhotoblastController extends Controller
 
     public function listPrintPhoto(){
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
-                // ambil code yang terdeteksi untuk mengambil path foto 
+                // ambil code yang terdeteksi untuk mengambil path foto
                 $code = Code::where('code', session('code'))->first();
                 $directory = 'public/'.$code->transaction->email.'/photo';
                 if(Storage::exists($directory)) {
@@ -199,7 +199,7 @@ class PhotoblastController extends Controller
 
     public function retakePhoto(Request $request) {
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 if($request->photos) {
                     // ambil nama file photo bersangkutan
@@ -230,13 +230,13 @@ class PhotoblastController extends Controller
 
     public function sendPhoto(Request $request) {
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 if($request->email) {
                     // ambil path foto dari suatu folder
                     $filePath = storage_path('app/public/'.$request->email.'/photo/');
                     $photoFiles = glob($filePath.'/*.png');
-    
+
                     // kirim pesan email
                     Mail::to($request->email)->send(new SendPhotoAndVideo($photoFiles));
                     return response()->json(['message' => $photoFiles], 201);
@@ -250,7 +250,7 @@ class PhotoblastController extends Controller
 
     public function print(Request $request) {
         if(session()->has('code')){
-            $code = Code::where('code', session('code'))->first(); 
+            $code = Code::where('code', session('code'))->first();
             if($code && $code->status == 'ready') {
                 if($request->photos){
                     // ambil template photo collage yang akan digunakan
@@ -261,7 +261,7 @@ class PhotoblastController extends Controller
                     foreach($request->photos as $photo){
                         array_push($photos, asset(str_replace('public', 'storage', $photo)));
                     }
-                    
+
                     return view('print', [
                         'template_src' => $temp->src,
                         'template_width' => $temp->width,
